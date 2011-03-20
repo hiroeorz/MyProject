@@ -5,4 +5,9 @@ class Project < ActiveRecord::Base
     self.users.include?(a_user)
   end
 
+  alias member? have_user?
+
+  def members
+    self.users
+  end
 end

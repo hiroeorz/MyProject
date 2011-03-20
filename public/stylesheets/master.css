@@ -75,8 +75,12 @@ div.project-ticket {
   margin-bottom: 20px;
   display: block;
   float: left;
-  border: 1px solid #555;
+  border: 1px solid #999;
   width: 500px;
+}
+
+div.my-project {
+  background-color: #faf0e6;
 }
 
 
@@ -91,18 +95,21 @@ div#content h2	{
 }
 
 div#content h3	{
-  background-color: #ffffff;
   background-position: 0px 2px;
-  font-size: 1.2em;
+  font-size: 1.5em;
   line-height: 22px;
   padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 0;
 }
 
-div#content h3.project-title, div#content img.project-icon {
+div#content h3.project-title, div#content h3.my-project-title, div#content img.project-icon {
   display: block;
   float: left;
+}
+
+h3.my-project-title {
+  color: #800000;
 }
 
 div#content h4	{
@@ -327,3 +334,13 @@ span.timeline-time {
   font-size: 0.80em;
   margin-left: 10px;
 }
+
+img.member-icon {
+  display: block;
+  float: right;
+  margin: 2px;
+  width: 37px;
+  height: 37px;
+}
+
+div.clear { clear: both; }

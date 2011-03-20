@@ -2,21 +2,24 @@
   <p class="information">MyProjectはあなたがプロジェクトを始めるお手伝いをする為のサービスです。あなた一人でプロジェクトをはじめてもいいですし、既にあるプロジェクトに参加するのもいいでしょう。まずは始めてみましょう！</p>
 
 <% @projects.each do |project| -%>
-  <div class="project-ticket">
+  <div class="project-ticket <%= project.member?(login_user) ? 'my-project' : '' %>">
+
     <% if !project.icon_url.nil? and !project.icon_url.empty? -%>
       <%= image_tag(project.icon_url, :alt => project.name,
                     :class => "project-icon") %>
     <% end -%>
-    <h3 class="project-title"><%= project.name %></h3>
 
-    <div style="display:block; float:right">
-      <%= link_to "表示", {:controller => :projects, :action => :show, 
-                          :id => project.id},
-                         :class => "menulink" %>
-      <%= link_to "編集", {:controller => :projects, :action => :edit, 
-                          :id => project.id},
-                         :class => "menulink" %>
-    </div>
+    <% project.members.each do |member| -%>
+      <%= image_tag(member.icon_link, :class => "member-icon") %>
+    <% end -%>
+    <div class="clear"></div>
+
+    <h3 class="<%= project.member?(login_user) ? 'my-project-title' : 'project-title' %>">
+      <%= link_to project.name, {:controller => :projects, :action => :show, 
+                                 :id => project.id},
+                                 :class => "menulink" %>
+    
+    </h3>
 
     <div style="clear:both"></div>
     <h4>概要</h4>

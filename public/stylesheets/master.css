@@ -86,23 +86,32 @@ div.project-ticket {
   margin-bottom: 20px;
   display: block;
   float: left;
-  border: 1px solid #999;
+  border: 2px inset #999;
   width: 95%;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  background: -moz-linear-gradient(top,#fffaf0,#faebd7);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fffaf0),to(#faebd7));
 }
 
 div.my-project {
-  background-color: #faf0e6;
+  background: -moz-linear-gradient(top,#fff0f5,#ffe4e1);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fff0f5),to(#ffe4e1));
 }
 
 
 div#content h2	{
-  background-color: #800000;
+  background: -moz-linear-gradient(top,#829AA8,#405A6A);
+  background: -webkit-gradient(linear,left top,left bottom,from(#829AA8),to(#405A6A));
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
   font-size: 0.875em;
   color: #fff;
   line-height: 32px;
   padding-left: 6px;
   margin-top: 0;
   margin-bottom: 0;
+
 }
 
 div#content h3	{

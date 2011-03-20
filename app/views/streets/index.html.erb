@@ -2,34 +2,7 @@
   <p class="information">MyProjectはあなたがプロジェクトを始めるお手伝いをする為のサービスです。あなた一人でプロジェクトをはじめてもいいですし、既にあるプロジェクトに参加するのもいいでしょう。まずは始めてみましょう！</p>
 
 <% @projects.each do |project| -%>
-  <div class="project-ticket <%= project.member?(login_user) ? 'my-project' : '' %>">
-
-    <% if !project.icon_url.nil? and !project.icon_url.empty? -%>
-      <%= image_tag(project.icon_url, :alt => project.name,
-                    :class => "project-icon") %>
-    <% end -%>
-
-    <% project.members.each do |member| -%>
-      <%= image_tag(member.icon_link, :class => "member-icon") %>
-    <% end -%>
-    <div class="clear"></div>
-
-    <h3 class="<%= project.member?(login_user) ? 'my-project-title' : 'project-title' %>">
-      <%= link_to project.name, {:controller => :projects, :action => :show, 
-                                 :id => project.id},
-                                 :class => "menulink" %>
-    
-    </h3>
-
-    <div style="clear:both"></div>
-    <h4>概要</h4>
-    <p class="project-info-body"><%= project.about%></p>
-
-    <p class="project-date">最終更新日: <%= project.created_at %></p>
-    <div style="clear:both"></div>
-    <p class="project-date">プロジェクト作成日: <%= project.created_at %></p>
-    <div style="clear:both"></div>
-  </div>
+  <%= render "project", :project => project %>
 <% end -%>
 
 

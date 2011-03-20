@@ -1,25 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Login:</b>
-  <%= @user.login %>
+  <%= image_tag @user.icon_link, :title => @user.username, 
+                :alt => @user.username%>
+  <%= @user.username %>
 </p>
 
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
 </p>
 
 <p>
-  <b>Crypted password:</b>
-  <%= @user.crypted_password %>
+  <b>参加プロジェクト数:</b>
+  <%= @user.projects.size %>
 </p>
 
-<p>
-  <b>Salt:</b>
-  <%= @user.salt %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% @user.projects.each do |project| -%>
+  <%= render "/streets/project", :project => project %>
+<% end -%>

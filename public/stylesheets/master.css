@@ -9,6 +9,17 @@ body {
 
 a	{color: #017acd}
 
+h1 a, h2 a, h3 a {
+  color: #000;
+  text-decoration: none;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: #000;
+}
+
 a.menulink {
   color: #ccc;
   font-size: 0.8em;
@@ -76,7 +87,7 @@ div.project-ticket {
   display: block;
   float: left;
   border: 1px solid #999;
-  width: 500px;
+  width: 95%;
 }
 
 div.my-project {

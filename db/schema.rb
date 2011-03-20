@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110320072720) do
+ActiveRecord::Schema.define(:version => 20110320172521) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(:version => 20110320072720) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "icon_link",                           :default => ""
+    t.string   "username",                            :default => "", :null => false
+    t.integer  "num_msgs",                            :default => 0
+    t.integer  "num_replies",                         :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

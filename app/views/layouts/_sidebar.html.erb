@@ -1,0 +1,27 @@
+
+<!-- サイドバー -->
+<div id="sidebar">
+
+
+<ul class="sidemenu" id="tweets-edit">
+  <li>
+    <%= text_area :tweet , "text", :cols => 27, :rows => 5  %><br />
+  </li>
+  <li>
+    <%= submit_tag "送信", :onclick => "timeline.update()" %>
+    <%= submit_tag "更新", 
+                   :onclick => "timeline.homeTimeline(timeline.latest_id)"%>
+  </li>
+</ul>
+
+<ul class="sidemenu" id="tweets">
+</ul>
+
+
+<p class="feed">
+<a href="feed.xml">
+RSSフィード
+</a>
+</p>
+
+</div>

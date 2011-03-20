@@ -1,0 +1,41 @@
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>About:</b>
+  <%= @project.about %>
+</p>
+
+<p>
+  <b>Icon url:</b>
+  <%= @project.icon_url %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @project.created_at %>
+</p>
+
+<p>
+  <b>Updated at:</b>
+  <%= @project.updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+<% if @project.have_user?(login_user) %>
+  <%= link_to "このプロジェクトへの参加をやめる", {:controller => :projects, 
+                                              :action => :delete_me, 
+                                              :id => @project.id},
+               :conferm => "プロジェクトから外れます。よろしいですか？" %>
+<% else %>
+  <%= link_to "このプロジェクトに参加する", {:controller => :projects, 
+                                         :action => :add_me, 
+                                         :id => @project.id},
+              :conferm => "プロジェクトに参加します。よろしいですか？" %>
+<% end %>

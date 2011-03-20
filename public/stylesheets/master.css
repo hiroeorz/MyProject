@@ -1,0 +1,329 @@
+body {
+  font-size:   14px;
+  line-height: 25px;
+  margin: 0;
+  padding: 0;
+  font-family: "minion-pro-1","minion-pro-2","Times New Roman", Georgia, helvetica,arial,freesans,clean,sans-serif;
+}
+
+
+a	{color: #017acd}
+
+a.menulink {
+  color: #ccc;
+  font-size: 0.8em;
+}
+
+/* コンテナ */
+div#container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#container-inner {
+    background-position: right top;
+}
+
+/* ヘッダー */
+div#header	{
+  background-color: #f5f5f5;
+  background-position: 0 -60px;
+  padding: 10px 20px 20px;
+  padding-bottom: 5px;
+  margin-bottom: 0;
+}
+
+div#header h1 {
+  font-size: 2.2em;
+  line-height: 35px;
+  margin: 0;
+}
+
+div#header p	{color: #666666;
+	font-size: 0.75em;
+	margin: 0}
+
+/* パンくずリスト */
+p#bread	{font-size: 0.75em;
+	margin-top: 3px;
+	margin-bottom: 30px;
+}
+
+/* メイン */
+div#main {
+  width: 100%;
+  float: left;
+  margin-right: 0px;
+}
+
+/* コンテンツ */
+div#content {
+  width: 100%;
+  float: right;
+  margin-left: -240px;
+  margin-right: auto;
+  margin-bottom: 25px;
+}
+
+div.inner-content {
+  margin-left: 230px;  
+}
+
+div.project-ticket {
+  padding-left: 5px;
+  margin-bottom: 20px;
+  display: block;
+  float: left;
+  border: 1px solid #555;
+  width: 500px;
+}
+
+
+div#content h2	{
+  background-color: #800000;
+  font-size: 0.875em;
+  color: #fff;
+  line-height: 32px;
+  padding-left: 6px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+div#content h3	{
+  background-color: #ffffff;
+  background-position: 0px 2px;
+  font-size: 1.2em;
+  line-height: 22px;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+div#content h3.project-title, div#content img.project-icon {
+  display: block;
+  float: left;
+}
+
+div#content h4	{
+  line-height: 16px; 
+  font-size: 0.98em;;
+  margin: 0;
+  margin-top: 7px;
+  margin-left: 15px;
+  padding: 0;
+}
+
+div#content p	{
+  font-size: 0.75em;
+  line-height: 1.6;
+  margin-top: 3px;
+}
+
+div#content p.project-info-body {
+  margin-left: 15px;
+}
+
+div#content p.project-date {
+  line-height: 16px;
+  padding: 0;
+  margin: 0;
+  margin-right: 3px;
+  display:block;
+  float: right;
+}
+
+/* サイドバー */
+div#sidebar {
+  width: 220px;
+  height: 800px;
+  float: left;
+  margin-bottom: 25px;
+  background-color: #E9F1F4;
+  border: outset 1px #f5fffa;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #111;
+}
+
+ul.sidemenu {
+  font-size: 0.75em;
+  margin-top: 0;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0;
+  line-height: 0;
+}
+
+ul.sidemenu li	{
+  display: block;
+  float: left;
+  border: groove 2px #555;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  list-style-type: none;
+  margin: 2px;
+  width: 218px;
+}
+
+ul.sidemenu li a {
+  display: block;
+  line-height: 24px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #005087;
+  border: solid 1px #ffffff;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+ul.sidemenu li a:hover	{background-color: #017acd}
+
+ul.sidemenu li div {
+  display: block;
+  float: left;
+}
+
+ul.sidemenu li div.image-div {
+  width: 35px;
+  height: 40px;
+}
+
+ul.sidemenu li div.text-div {
+  width: 160px;
+}
+
+ul.sidemenu li div.body-div {
+  margin-bottom: 10px;
+}
+
+ul.sidemenu li p {
+  font-size: 0.97em;
+  line-height: 15px;
+  text-decoration: none;
+  font-weight: normal;
+  color: #eee;
+  margin: 0px;
+  padding: 0;
+  padding-left: 10px;
+  border: 0;
+}
+
+ul.sidemenu ul 	{
+  margin: 10px 0;
+  padding: 0;
+}
+
+ul.sidemenu ul li a {
+  background-color: transparent;
+  padding-left: 13px;
+  color: #000000;
+  border: none;
+  line-height: 24px;
+  margin-bottom: 0
+}
+
+ul.sidemenu ul li a:hover 	{background-color: #faffda;
+	color: #000000}
+
+
+p.feed	{
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+p.feed a {
+  background-color: #ffffff;
+  font-size: 0.75em;
+  color: #444444;
+  text-decoration: none;
+  line-height: 30px;
+  border: solid 1px #888888;
+  padding: 5px;
+}
+
+p.feed img {
+  border: none;
+  vertical-align: middle;
+}
+
+/* 右サイドバー */
+div#sidebar-right {
+  width: 260px;
+  float: right;
+}
+
+div.info	{border: none;
+	margin-bottom: 20px}
+
+div#sidebar-right h2	{
+  background-color: #d1eae2;
+  border-bottom: none;
+  color: #4169e1;
+  font-size: 0.75em;
+  text-align: center;
+  padding: 5px;
+  margin-top: 0;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div#sidebar-right p.photo	{text-align: center}
+
+div#sidebar-right p	{font-size: 0.75em;
+	margin: 10px}
+
+div#sidebar-right ul	{font-size: 0.75em;
+	margin: 5px 10px;
+	padding: 0}
+
+div#sidebar-right ul li 	{
+  padding-left: 13px;
+  list-style-type: none;
+}
+
+
+
+/* フッター */
+div#footer	{background-image: none;
+	background-repeat: repeat-x;
+	background-color: #ffffff;
+	border-top: solid 1px #666666;
+	width: 100%;
+	margin-top: 0;
+	padding-top: 8px;
+	clear: both}
+
+address	{font-size: 0.75em;
+	font-style: normal;
+	text-align: center}
+
+
+.project-icon {
+  height: 70px;
+  border: 0;
+}
+
+.tweet-username {
+  color: #bbb;
+  margin-left: 7px;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+ul#tweets li {
+  padding: 5px;
+}
+
+ul#tweets li img {
+  height: 32px;
+  width: 32px;
+}
+
+span.timeline-time {
+  color: #888;
+  font-size: 0.80em;
+  margin-left: 10px;
+}

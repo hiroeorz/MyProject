@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>MyProject</title>
+
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "timeline.js" %>
+  <%= javascript_include_tag "http://localhost/static/twoorl.js" %>
+  <%= csrf_meta_tag %>
+
+  <script type="text/javascript">
+  //<![CDATA[
+    window.onload = function() {
+      timeline.start();
+    }
+  //]]>
+  </script>
+
+
+</head>
+<body>
+
+<!-- コンテナ -->
+<div id="container">
+
+<!-- コンテナ・インナー -->
+  <div id="container-inner">
+
+<!-- ヘッダー -->
+    <div id="header">
+      <h1>MyProject</h1>
+      <p>小さなプロジェクトから始めよう</p>
+    </div>
+
+    <!-- メイン -->
+    <div id="main">
+
+      <!-- コンテンツ -->
+      <div id="content">
+        <div class="inner-content">
+          <%= yield %>      
+        </div>
+      </div>
+
+      <%= render :partial => "layouts/sidebar" %>
+    </div>
+
+    <%# = render :partial => "layouts/sidebar_right" %>
+    
+    <!-- フッター -->
+    <div id="footer">
+      <address>Copyright (C) GoronekoLab, All rights reserved.</address>
+    </div>
+    
+  </div>
+  
+</div>
+
+</body>
+</html>

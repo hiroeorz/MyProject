@@ -1,0 +1,32 @@
+  <h2>ストリート</h2>
+  <p class="information">MyProjectはあなたがプロジェクトを始めるお手伝いをする為のサービスです。あなた一人でプロジェクトをはじめてもいいですし、既にあるプロジェクトに参加するのもいいでしょう。まずは始めてみましょう！</p>
+
+<% @projects.each do |project| -%>
+  <div class="project-ticket">
+    <% if !project.icon_url.nil? and !project.icon_url.empty? -%>
+      <%= image_tag(project.icon_url, :alt => project.name,
+                    :class => "project-icon") %>
+    <% end -%>
+    <h3 class="project-title"><%= project.name %></h3>
+
+    <div style="display:block; float:right">
+      <%= link_to "表示", {:controller => :projects, :action => :show, 
+                          :id => project.id},
+                         :class => "menulink" %>
+      <%= link_to "編集", {:controller => :projects, :action => :edit, 
+                          :id => project.id},
+                         :class => "menulink" %>
+    </div>
+
+    <div style="clear:both"></div>
+    <h4>概要</h4>
+    <p class="project-info-body"><%= project.about%></p>
+
+    <p class="project-date">最終更新日: <%= project.created_at %></p>
+    <div style="clear:both"></div>
+    <p class="project-date">プロジェクト作成日: <%= project.created_at %></p>
+    <div style="clear:both"></div>
+  </div>
+<% end -%>
+
+

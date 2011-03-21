@@ -7,13 +7,22 @@
 </p>
 
 <p>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
+  <%= link_to '編集', edit_user_path(@user) %>
 </p>
 
 <p>
   <b>参加プロジェクト数:</b>
   <%= @user.projects.size %>
+</p>
+
+<p>
+  <b>現在実行中のステップ:</b>
+  <% if @user.step -%>
+    <%= link_to @user.step.name, {:controller => :steps, :action => :show,
+                                  :id => @user.step.id} %>
+  <% else -%>
+    無し
+  <% end %>
 </p>
 
 <% @user.projects.each do |project| -%>

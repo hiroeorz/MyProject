@@ -1,32 +1,46 @@
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<h2><%= @project.name %></h2>
+
+<% if !@project.icon_url.nil? and !@project.icon_url.empty? -%>
+  <p>
+    <%= image_tag @project.icon_url, :title => @project.name, 
+                                     :alt => @project.name %>
+  </p>
+<% end %>
 
 <p>
-  <b>About:</b>
+  <b>概要:</b>
   <%= @project.about %>
 </p>
 
-<p>
-  <b>Icon url:</b>
-  <%= @project.icon_url %>
-</p>
 
 <p>
-  <b>Created at:</b>
-  <%= @project.created_at %>
-</p>
-
-<p>
-  <b>Updated at:</b>
+  <b>登録日:</b>
+  <%= @project.created_at %>&nbsp;
+  <b>最終更新日:</b>
   <%= @project.updated_at %>
 </p>
 
+<h4 class="step-title">実行中のステップ</h4>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<% if @project.steps.empty? -%>
+  <table class="step-table">
+    <tr><td><p>実行中のステップはありません</p></td></tr>
+  </table>
+<% else %>
+  <table class="step-table">
+    <% @project.steps.each do |step| -%>
+      <tr>
+        <td><%= user_icon_tag(step.user) %></td>
+        <td><%= step.name %></td>
+      </tr>
+    <% end -%>
+  </table>
+<% end -%>
+
+<hr />
+
+<%= link_to '編集', edit_project_path(@project) %> |
 
 <% if @project.have_user?(login_user) %>
   <%= link_to "このプロジェクトへの参加をやめる", {:controller => :projects, 

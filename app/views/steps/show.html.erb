@@ -1,0 +1,18 @@
+<h2><%= @step.name %></h2>
+
+<p>
+  <b>担当:</b>
+  <%= link_to @step.user.username, {:controller => :users, :action => :show,
+                                    :id => @step.user.id} %>
+</p>
+
+<p>
+  <b>登録ユーザ:</b>
+  <%= link_to @step.created_user.username, {:controller => :users, 
+                                            :action => :show,
+                                            :id => @step.created_user.id} %>
+</p>
+
+
+<%= link_to 'Edit', edit_step_path(@step) %> |
+<%= link_to 'Back', steps_path %>

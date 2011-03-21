@@ -7,7 +7,7 @@
     <% end -%>
 
     <% project.members.each do |member| -%>
-      <%= image_tag(member.icon_link, :class => "member-icon") %>
+      <%= user_icon_tag(member, :class => "member-icon") %>
     <% end -%>
     <div class="clear"></div>
 

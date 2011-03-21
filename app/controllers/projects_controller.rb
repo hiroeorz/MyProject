@@ -27,7 +27,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   # GET /projects/new.xml
   def new
-    @project = Project.new
+    authenticate_user!
+    @project = Project.new(:created_user => login_user, :user => login_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,12 +38,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    authenticate_user!
     @project = Project.find(params[:id])
   end
 
   # POST /projects
   # POST /projects.xml
   def create
+    authenticate_user!
     @project = Project.new(params[:project])
     @project.users << login_user
 
@@ -60,6 +63,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
+    authenticate_user!
     @project = Project.find(params[:id])
 
     respond_to do |format|
@@ -76,6 +80,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
+    authenticate_user!
     @project = Project.find(params[:id])
     @project.destroy
 
@@ -88,12 +93,14 @@ class ProjectsController < ApplicationController
   #################### application methods ###################
 
   def add_me
+    authenticate_user!
     @project = Project.find(params[:id])
     @project.users << login_user
     redirect_to(@project, :notice => "プロジェクトに参加しました！")    
   end
 
   def delete_me
+    authenticate_user!
     @project = Project.find(params[:id])
     @project.users.delete(login_user)
     @project.save

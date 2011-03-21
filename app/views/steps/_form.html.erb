@@ -15,15 +15,11 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :created_user %><br />
-    <%= f.text_field :created_user %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <%= f.hidden_field :user_id, :value => login_user.id %>
+  <%= f.hidden_field :created_user_id, :value => login_user.id %>
+  <%= f.hidden_field :project_id %>
 <% end %>

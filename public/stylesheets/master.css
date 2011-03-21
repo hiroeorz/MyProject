@@ -142,6 +142,14 @@ table.step-table {
   margin-left: 15px;
 }
 
+table.step-table tr td a {
+  font-size: 0.90em;
+}
+
+div.item-content {
+  margin-left: 15px;
+}
+
 div#content h4	{
   line-height: 16px; 
   font-size: 0.98em;;
@@ -374,3 +382,13 @@ img.member-icon {
 }
 
 div.clear { clear: both; }
+
+div.right-menu {
+  display: block;
+  float: right;
+  font-size: 0.8em;
+  margin-top: -22px;
+  margin-right: 5px;
+}
+
+div.white-menu a { color: #fff;}

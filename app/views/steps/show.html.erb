@@ -1,5 +1,10 @@
 <h2><%= @step.name %></h2>
 
+<b>親プロジェクト</b>
+<%= link_to @step.project.name, {:controller => :projects, 
+                                 :action => :show,
+                                 :id => @step.project.id} %>
+
 <p>
   <b>担当:</b>
   <%= link_to @step.user.username, {:controller => :users, :action => :show,

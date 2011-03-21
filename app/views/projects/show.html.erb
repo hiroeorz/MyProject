@@ -1,6 +1,10 @@
 
 <h2><%= @project.name %></h2>
 
+<div class="right-menu white-menu">
+  <%= link_to '編集', edit_project_path(@project) %>
+</div>
+
 <% if !@project.icon_url.nil? and !@project.icon_url.empty? -%>
   <p>
     <%= image_tag @project.icon_url, :title => @project.name, 
@@ -22,34 +26,53 @@
 </p>
 
 <h4 class="step-title">実行中のステップ</h4>
+<div class="right-menu">
+  <%= link_to "登録", {:controller => :steps, 
+                      :action => :new, 
+                      :project_id => @project.id }%>
+</div>
 
-<% if @project.steps.empty? -%>
-  <table class="step-table">
+<table class="step-table">
+  <% if @project.steps.empty? -%>
     <tr><td><p>実行中のステップはありません</p></td></tr>
-  </table>
-<% else %>
-  <table class="step-table">
+  <% else %>
+
     <% @project.steps.each do |step| -%>
       <tr>
         <td><%= user_icon_tag(step.user) %></td>
-        <td><%= step.name %></td>
+        <td><%= link_to step.name, {:controller => :steps, 
+                                    :action => :show, 
+                                    :id => step.id} %></td>
       </tr>
     <% end -%>
-  </table>
-<% end -%>
 
-<hr />
+  <% end -%>
+</table>
 
-<%= link_to '編集', edit_project_path(@project) %> |
+<h4 class="step-title">参加メンバー</h4>
 
+<div class="right-menu">
 <% if @project.have_user?(login_user) %>
   <%= link_to "このプロジェクトへの参加をやめる", {:controller => :projects, 
                                               :action => :delete_me, 
                                               :id => @project.id},
-               :conferm => "プロジェクトから外れます。よろしいですか？" %>
-<% else %>
+               :confirm => "プロジェクトから外れます。よろしいですか？" %>
+
+<% else -%>
   <%= link_to "このプロジェクトに参加する", {:controller => :projects, 
                                          :action => :add_me, 
                                          :id => @project.id},
-              :conferm => "プロジェクトに参加します。よろしいですか？" %>
-<% end %>
+              :confirm => "プロジェクトに参加します。よろしいですか？" %>
+<% end -%>
+</div>
+
+<% if @project.members.empty? -%>
+  <div class="item-content">
+    <p><%= "メンバーはいません" if @project.members.empty? %></p>
+  </div>
+<% end -%>
+
+<% @project.members.each do |member| -%>
+  <div class="item-content"><%= user_icon_tag(member) %></div>
+<% end -%>
+

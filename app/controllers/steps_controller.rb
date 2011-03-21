@@ -26,7 +26,7 @@ class StepsController < ApplicationController
   # GET /steps/new
   # GET /steps/new.xml
   def new
-    @step = Step.new
+    @step = Step.new(:project_id => params[:project_id])
 
     respond_to do |format|
       format.html # new.html.erb

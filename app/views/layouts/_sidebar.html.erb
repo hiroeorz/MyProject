@@ -2,13 +2,15 @@
 <!-- サイドバー -->
 <div id="sidebar">
 
-
 <ul class="sidemenu" id="tweets-edit">
   <li>
-    <%= text_area :tweet , "text", :cols => 27, :rows => 5  %><br />
+    <form id="tweet-form">
+      <%= text_area :tweet , "text", :cols => 27, :rows => 5  %><br />
+    </form>
   </li>
   <li>
-    <%= submit_tag "送信", :onclick => "timeline.update()" %>
+    <%= submit_tag "送信", :id => "tweet-button",
+                           :onclick => "timeline.update()" %>
     <%= submit_tag "更新", 
                    :onclick => "timeline.homeTimeline(timeline.latest_id)"%>
   </li>

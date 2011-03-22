@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(:version => 20110321060142) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
+    t.string   "icon_link"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "icon_link",                           :default => ""
     t.string   "username",                            :default => "", :null => false
     t.integer  "num_msgs",                            :default => 0
     t.integer  "num_replies",                         :default => 0

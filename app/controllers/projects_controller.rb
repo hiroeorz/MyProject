@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     authenticate_user!
-    @project = Project.new(:created_user => login_user, :user => login_user)
+    @project = Project.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     authenticate_user!
-    @project = Project.new(params[:project])
+    @project = Project.new(params[:project].merge({:users => [login_user]}))
     @project.users << login_user
 
     respond_to do |format|

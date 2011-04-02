@@ -102,9 +102,68 @@ class ProjectsController < ApplicationController
   def delete_me
     authenticate_user!
     @project = Project.find(params[:id])
+    
+    @project.steps.each do |step|
+      step.user = nil if step.user == login_user
+      step.person_in_charge = nil if step.person_in_charge == login_user 
+      step.save
+    end
+
     @project.users.delete(login_user)
+
+    @project.steps.each {|step|
+      if step.user and step.user == login_user 
+        step.user = nil 
+        step.save
+      end
+    }
+
     @project.save
     redirect_to(@project, :notice => "プロジェクトへの参加を取り消しました。")    
+  end
+
+  def detail
+    authenticate_user!
+    @project = Project.find(params[:id])
+
+    render
+  end
+
+  def detail_edit
+    authenticate_user!
+    @project = Project.find(params[:id])
+
+    render
+  end
+
+  def detail_save
+    authenticate_user!
+    @project = Project.find(params[:id])
+    result = @project.update_attributes(params[:project])
+
+    respond_to do |format|
+      if result
+        format.html { redirect_to({:action => :detail, :id => @project.id}, 
+                            :notice => 'Project was successfully created.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+
+  def watch
+    authenticate_user!
+    @project = Project.find(params[:id])
+    result = @project.watchers << login_user
+
+    respond_to do |format|
+      if result
+        format.html { redirect_to(@project, 
+                                  :notice => 'This project is watching.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
 
 end

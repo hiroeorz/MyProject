@@ -27,12 +27,19 @@ class UsersController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    authenticate_user!
+
+    if @user != login_user
+      raise UnAuthorized.new
+    end
+
     @user = User.find(params[:id])
   end
 
   # PUT /projects/1
   # PUT /projects/1.xml
   def update
+    authenticate_user!
     @user = User.find(params[:id])
 
     if @user != login_user
@@ -47,6 +54,28 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def followers
+    authenticate_user!
+    user = User.find(params[:id])
+    @users = user.followers
+
+    respond_to do |format|
+      format.html { render :index } # index.html.erb
+      format.xml  { render :xml => @users }
+    end
+  end
+
+  def friends
+    authenticate_user!
+    user = User.find(params[:id])
+    @users = user.friends
+
+    respond_to do |format|
+      format.html { render :index } # index.html.erb
+      format.xml  { render :xml => @users }
     end
   end
 

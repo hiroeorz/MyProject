@@ -1,0 +1,55 @@
+
+    <% steps.each do |step| -%>
+      <div class="step-item item-content
+                  <%= 'disabled' if step.user.nil? %>
+                  <%= 'alert' if step.person_in_charge.nil? %> ">
+
+
+        <div class="item-right-menu">        
+            <% if step.user and (step.user == login_user)  -%>
+              <%= link_to "実行停止", {:controller => :steps, 
+                                          :action => :release, 
+                                          :id => step.id} %>
+            <% end -%>
+
+            <% if step.person_in_charge.nil? and 
+                     @project.users.include?(login_user) -%>
+              <%= link_to "担当する", {:controller => :steps, 
+                                            :action => :add_my_steps, 
+                                            :id => step.id} %>
+            <% end -%>
+
+            <% if step.person_in_charge and 
+                    (step.person_in_charge == login_user)  -%>
+              <%= link_to "担当を外れる", {:controller => :steps, 
+                                          :action => :release_charge, 
+                                          :id => step.id} %>
+            <% end -%>
+
+            <%= link_to("閉じる", {:controller => :steps, :action => :close,
+                                      :id => step.id}) %>
+        </div>
+
+        <div style="display:block; float:left; width: 200px;">
+          <% if step.user -%>
+            <%= user_icon_tag(step.user) %>
+          <% elsif step.person_in_charge -%>
+            <%= user_icon_tag(step.person_in_charge) %>
+          <% end -%>
+
+          <%= link_to step.name, {:controller => :steps, 
+                                      :action => :show, 
+                                      :id => step.id} %>
+
+        </div>
+
+        <% if step.user.nil? and step.person_in_charge == login_user %>
+          <%= link_to "実行する", {:controller => :steps, 
+                                    :action => :set_me, 
+                                    :id => step.id},
+                       :class => "execute-button" %>
+        <% end %>
+
+      </div>
+
+    <% end -%>

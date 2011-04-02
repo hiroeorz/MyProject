@@ -1,21 +1,18 @@
-<h1>Listing users</h1>
+<h2>ユーザ一覧</h2>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="right-menu  white-menu">
+  <%= link_to "My Profile", {:controller => :users, :action => :show, 
+                             :id => login_user.id} %>
+
+</div>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-  </tr>
+  <div class="step-item">
+    <%= user_icon_tag(user) %>
+    <%= user.username %>
+    フォローされている：<%= user.followers.count %> | 
+    フォローしている：<%= user.friends.count %>
+  </div>
 <% end %>
-</table>
 
 <br />
-
-<%= link_to 'New User', new_user_path %>

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321060142) do
+ActiveRecord::Schema.define(:version => 20110331023224) do
+
+  create_table "histories", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -18,9 +27,15 @@ ActiveRecord::Schema.define(:version => 20110321060142) do
     t.string   "icon_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "detail"
   end
 
   create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  create_table "projects_watchers", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "project_id"
   end
@@ -30,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20110321060142) do
     t.integer "user_id"
     t.integer "created_user_id"
     t.integer "project_id"
+    t.boolean "closed"
+    t.integer "my_step_user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -63,5 +80,10 @@ ActiveRecord::Schema.define(:version => 20110321060142) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+  create_table "users_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "follower_id"
+  end
 
 end

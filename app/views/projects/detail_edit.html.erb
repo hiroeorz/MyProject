@@ -1,0 +1,33 @@
+
+<h2>仕様詳細: <%= @project.name %></h2>
+<div class="right-menu white-menu">
+  <%= link_to 'キャンセル', {:controller => :projects, :action => :detail,
+                            :id => @project.id } %>
+</div>
+
+<%= form_for(@project, :url => {:controller => :projects, 
+                                 :action => :detail_save,
+                                 :id => @project.id }) do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :detail %><br />
+    <%= f.text_area :detail %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

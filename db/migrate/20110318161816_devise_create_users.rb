@@ -11,7 +11,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.token_authenticatable
 
       t.string :icon_link
-
       t.timestamps
     end
 

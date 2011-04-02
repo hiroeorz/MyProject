@@ -1,4 +1,6 @@
 Myproject::Application.routes.draw do
+  resources :histories
+
   resources :steps
 
   devise_for :users

@@ -1,6 +1,12 @@
-<h1>Editing user</h1>
+<h2><%= @user.username %>のプロフィール編集</h2>
+<div class="right-menu white-menu">
+  <%= link_to 'キャンセル', {:controller => :users, :action => :show,
+                            :id => @user.id} %>
+</div>
+
+<p>
+  <%= image_tag @user.icon_link, :title => @user.username, 
+                :alt => @user.username%>
+</p>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

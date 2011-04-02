@@ -15,7 +15,11 @@ var Timeline = function() {this.init();}
       },
 
       update: function() {
-	  this.updateIframe();
+	  try {
+	      timeline.updateXHR2();
+	  } catch(e) { /* not support XMLHttpRequest */
+	      timeline.updateIframe();
+	  }
       },
 
       updateIframe: function() {
@@ -35,13 +39,13 @@ var Timeline = function() {this.init();}
 	  i2.name = 'postresult';
 	  i2.style.display = 'none';
 	  d.body.appendChild(i2);
-	  
+
 	  // レスポンス時イベント登録
 	  i2.contentWindow.addEventListener('unload', function(e) {
-	      timeline.homeTimeline(this.latest_id);
+	      timeline.homeTimeline(timeline.latest_id);
 	      $("#tweet_text").val("");
 	  }, false);
-	  
+
 	  // クロスドメインへの POST メソッド送信
 	  var iDoc = i.contentWindow.document;
 	  iDoc.open();
@@ -50,6 +54,16 @@ var Timeline = function() {this.init();}
 	  iDoc.write('</form>');
 	  iDoc.write('<script>window.onload = function(){document.forms[0].submit();}</script>');
 	  iDoc.close();	  
+      },
+
+      updateJquery: function() {
+	  alert("jquery post");
+	  var text = $("#tweet_text").attr("value");
+	  var url = "http://localhost/statuses/update";
+	  $.post(url, {status: encodeURIComponent(text)},
+		function(data, status) {
+		    alert(data);
+		})
       },
 
       updateXHR2: function() {

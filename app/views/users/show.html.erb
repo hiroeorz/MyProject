@@ -1,29 +1,60 @@
+<h2><%= @user.username %></h2>
+
+<div class="right-menu white-menu">
+  <%= link_to '設定', edit_user_path(@user) %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <%= image_tag @user.icon_link, :title => @user.username, 
                 :alt => @user.username%>
-  <%= @user.username %>
+
+
+  <%= link_to "フォローしている:#{@user.friends.count}",
+              {:controller => :users, :action => :friends, :id => @user.id} %>
+
+  &nbsp;|&nbsp;
+
+  <%= link_to "フォローされている:#{@user.followers.count}",
+              {:controller => :users, :action => :followers, :id => @user.id} %>
+
 </p>
 
-<p>
-  <%= link_to '編集', edit_user_path(@user) %>
-</p>
+<br />
 
 <p>
-  <b>参加プロジェクト数:</b>
-  <%= @user.projects.size %>
+
+  <%= link_to "ウォッチしているプロジェクト:#{@user.watch_projects.count}",
+              {:controller => :users, :action => :show, :id => @user.id} %>
+
+  &nbsp;|&nbsp;
+
+
+  <%= link_to "参加中のプロジェクト:#{@user.projects.size}",
+              {:controller => :users, :action => :show, :id => @user.id} %>
+
+  &nbsp;|&nbsp;
+
+  <!-- pending -->
+  <%= link_to "過去に参加したプロジェクト:#{@user.projects.size}",
+              {:controller => :users, :action => :show, :id => @user.id} %>
+
 </p>
 
 <p>
   <b>現在実行中のステップ:</b>
   <% if @user.step -%>
-    <%= link_to @user.step.name, {:controller => :steps, :action => :show,
-                                  :id => @user.step.id} %>
+    <%= link_to "#{@user.step.name} [#{@user.step.project.name}]", 
+                 {:controller => :steps, 
+                  :action => :show, 
+                  :id => @user.step.id} %>
   <% else -%>
     無し
   <% end %>
 </p>
+
+<h3></h3>
 
 <% @user.projects.each do |project| -%>
   <%= render "/streets/project", :project => project %>

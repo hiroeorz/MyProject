@@ -1,0 +1,12 @@
+
+<h2>仕様詳細: <%= @project.name %></h2>
+
+<div class="right-menu white-menu">
+  <%= link_to '編集', {:controller => :projects, :action => :detail_edit,
+                      :id => @project.id } %>
+</div>
+
+<b><%= link_to "プロジェクトページへ戻る", {:action => :show, :id => @project.id}%></b>
+<hr />
+
+<%=simple_format @project.detail %>

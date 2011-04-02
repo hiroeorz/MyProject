@@ -94,16 +94,17 @@ div.project-ticket {
   background: -webkit-gradient(linear,left top,left bottom,from(#fffaf0),to(#faebd7));
 }
 
+/*
 div.my-project {
   background: -moz-linear-gradient(top,#fff0f5,#ffe4e1);
   background: -webkit-gradient(linear,left top,left bottom,from(#fff0f5),to(#ffe4e1));
 }
-
+*/
 
 div#content h2	{
   background: -moz-linear-gradient(top,#829AA8,#405A6A);
   background: -webkit-gradient(linear,left top,left bottom,from(#829AA8),to(#405A6A));
-  font-size: 0.875em;
+  font-size: 1.20em;
   color: #fff;
   line-height: 32px;
   padding-left: 6px;
@@ -133,9 +134,11 @@ h3.my-project-title {
 div#content h4.step-title	{
   background: -moz-linear-gradient(top,#d3d3d3,#a9a9a9);
   background: -webkit-gradient(linear,left top,left bottom,from(#d3d3d3),to(#a9a9a9));
-  font-size: 0.90em;
-  font-weight: normal;
-  padding: 3px 3px;
+  font-size: 1.00em;
+  font-weight: bolder;
+  padding: 5px 5px;
+  margin-top: 30px;
+  color: #555;
 }
 
 table.step-table {
@@ -160,7 +163,7 @@ div#content h4	{
 }
 
 div#content p	{
-  font-size: 0.75em;
+  font-size: 0.85em;
   line-height: 1.6;
   margin-top: 3px;
 }
@@ -272,6 +275,10 @@ ul.sidemenu ul li a {
 ul.sidemenu ul li a:hover 	{background-color: #faffda;
 	color: #000000}
 
+ul.sidemenu li form#tweet-form textarea {
+  font-size: 1.10em;
+  width: 195px;
+}
 
 p.feed	{
   margin-bottom: 10px;
@@ -341,9 +348,11 @@ div#footer	{background-image: none;
 	padding-top: 8px;
 	clear: both}
 
-address	{font-size: 0.75em;
-	font-style: normal;
-	text-align: center}
+address	{
+  font-size: 0.75em;
+  font-style: normal;
+  text-align: center;
+}
 
 
 .project-icon {
@@ -392,3 +401,77 @@ div.right-menu {
 }
 
 div.white-menu a { color: #fff;}
+
+textarea#project_detail {
+  width: 700px;
+  height: 700px;
+}
+
+div.step-item {
+  padding-top: 5px;
+  padding-left: 5px;
+  margin-bottom: 2px;
+  margin-top: 5px;
+  display: block;
+  float: left;
+  width: 97%;
+
+  background-color: #D1EAD2;
+  border: 1px solid #BBD2BC;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+}
+
+div.history-item {
+  background-color: #EAF2F5;
+  border: 1px solid #BEDCE7;
+}
+
+div.item-right-menu {
+  display:block;
+  float:right;
+  font-size: 0.8em;
+  color: #aaa;
+  margin-right: 10px;
+}
+
+div.disabled {
+  background-color: #bbb;
+  color: #fff;
+}
+
+div.alert {
+  background-color: #f08080;
+  color: #fff;
+}
+
+div.disabled p a {
+  color: #fff;
+}
+
+a.execute-button {
+  display: block;
+  float: left;
+  text-align: center;
+  background-color: #fff;
+  font-size: 1.20em;
+  padding: 6px 13px;
+  margin-left: 30px;
+  margin-top: 5px;
+  background-color: #faebd7;
+  text-decoration: none;
+  border: 3px solid #fff;
+
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  background: -moz-linear-gradient(top,#fffaf0,#faebd7);
+  background: -webkit-gradient(linear,left top,left bottom,from(#fffaf0),to(#faebd7));
+  color: #444;
+}
+
+a:hover.execute-button {
+  color: #444;
+}
+a:visited.execute-button {
+  color: #444;
+}
